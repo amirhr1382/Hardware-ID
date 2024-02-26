@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Hardware_ID.DatabaseContext;
+using Hardware_ID.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,39 +19,56 @@ namespace Hardware_ID
             InitializeComponent();
         }
 
-        private void listRegion_Load(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'hardware_IDDataSet.Region' table. You can move, or remove it, as needed.
-            this.regionTableAdapter.Fill(this.hardware_IDDataSet.Region);
-
+            frmRegion formregion = new frmRegion(this);
+            formregion.ShowDialog();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
-            frmRegion formregion = new frmRegion();
+            frmRegion formregion = new frmRegion(this);
+            formregion.regioId = GetSelectedId();
             formregion.ShowDialog();
-            this.regionTableAdapter.Fill(hardware_IDDataSet.Region);
+        }
+
+        private void dgvRegion_DoubleClick(object sender, EventArgs e)
+        {
+            listHardwareId sh = new listHardwareId();
+            sh.regionId = GetSelectedId();
+            sh.ShowDialog();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            int coderegion = int.Parse(dataGridView1.CurrentRow.Cells["Cregion"].Value.ToString());
             DialogResult result = MessageBox.Show("آیا از حذف این رکورد اطمینان دارید", "تاییدیه حذف", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                regionTableAdapter.DeleteQueryRegion(coderegion);
-                this.regionTableAdapter.Fill(this.hardware_IDDataSet.Region);
-                MessageBox.Show("با موفقیت حذف شد");
+                var db = DbContextSingleton.GetInstance();
+                var region = db.Regions.Single(a => a.Id == GetSelectedId());
+                db.Regions.Remove(region);
+                if (db.SaveChanges() > 0)
+                    Reload();
+                else
+                    MessageBox.Show("با شکست مواجه شد");
             }
         }
 
-        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        private void listRegion_Load(object sender, EventArgs e)
         {
-            listShenasnameh sregion = new listShenasnameh();
-            sregion.select = true;
-            sregion.Cregion = int.Parse(dataGridView1.CurrentRow.Cells["Cregion"].Value.ToString());
-            sregion.ShowDialog();
-            this.regionTableAdapter.Fill(this.hardware_IDDataSet.Region);
+            Reload();
+        }
+
+        public void Reload()
+        {
+            var db = DbContextSingleton.GetInstance();
+            IQueryable<Models.Region> query = db.Regions;
+            this.regionBindingSource.DataSource = new BindingList<Models.Region>(query.ToList());
+        }
+
+        public int GetSelectedId()
+        {
+            return Convert.ToInt32(dgvRegions.CurrentRow.Cells[0].Value);
         }
     }
 }

@@ -40,13 +40,13 @@ namespace Hardware_ID
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.AdminbindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.hardware_IDDataSet = new Hardware_ID.Hardware_IDDataSet();
-            this.adminTableAdapter = new Hardware_ID.Hardware_IDDataSetTableAdapters.AdminTableAdapter();
+            //this.hardware_IDDataSet = new Hardware_ID.Hardware_IDDataSet();
+            //this.adminTableAdapter = new Hardware_ID.Hardware_IDDataSetTableAdapters.AdminTableAdapter();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdminbindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hardware_IDDataSet)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.hardware_IDDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -137,16 +137,16 @@ namespace Hardware_ID
             // AdminbindingSource1
             // 
             this.AdminbindingSource1.DataMember = "Admin";
-            this.AdminbindingSource1.DataSource = this.hardware_IDDataSet;
+            //this.AdminbindingSource1.DataSource = this.hardware_IDDataSet;
             // 
             // hardware_IDDataSet
             // 
-            this.hardware_IDDataSet.DataSetName = "Hardware_IDDataSet";
-            this.hardware_IDDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            //this.hardware_IDDataSet.DataSetName = "Hardware_IDDataSet";
+            //this.hardware_IDDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // adminTableAdapter
             // 
-            this.adminTableAdapter.ClearBeforeFill = true;
+            //this.adminTableAdapter.ClearBeforeFill = true;
             // 
             // notifyIcon1
             // 
@@ -177,7 +177,7 @@ namespace Hardware_ID
             this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdminbindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hardware_IDDataSet)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.hardware_IDDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,8 +194,8 @@ namespace Hardware_ID
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.BindingSource AdminbindingSource1;
-        private Hardware_IDDataSet hardware_IDDataSet;
-        private Hardware_IDDataSetTableAdapters.AdminTableAdapter adminTableAdapter;
+        //private Hardware_IDDataSet hardware_IDDataSet;
+        //private Hardware_IDDataSetTableAdapters.AdminTableAdapter adminTableAdapter;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
     }

@@ -29,217 +29,160 @@ namespace Hardware_ID
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnAddP = new System.Windows.Forms.Button();
-            this.PCadmin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nadminDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ladminDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nCadminDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uadminDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.padminDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pICadminDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adminBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.hardware_IDDataSet = new Hardware_ID.Hardware_IDDataSet();
-            this.adminTableAdapter = new Hardware_ID.Hardware_IDDataSetTableAdapters.AdminTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adminBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hardware_IDDataSet)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.PCadmin,
-            this.nadminDataGridViewTextBoxColumn,
-            this.ladminDataGridViewTextBoxColumn,
-            this.nCadminDataGridViewTextBoxColumn,
-            this.uadminDataGridViewTextBoxColumn,
-            this.padminDataGridViewTextBoxColumn,
-            this.pICadminDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.adminBindingSource;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 131);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1125, 422);
-            this.dataGridView1.TabIndex = 0;
+            components = new System.ComponentModel.Container();
+            btnEdit = new System.Windows.Forms.Button();
+            btnDelete = new System.Windows.Forms.Button();
+            btnAdd = new System.Windows.Forms.Button();
+            adminBindingSource = new System.Windows.Forms.BindingSource(components);
+            dgvAdmins = new System.Windows.Forms.DataGridView();
+            Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            imagePathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            nationalCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            adminBindingSource1 = new System.Windows.Forms.BindingSource(components);
+            ((System.ComponentModel.ISupportInitialize)adminBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAdmins).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)adminBindingSource1).BeginInit();
+            SuspendLayout();
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(761, 27);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(110, 57);
-            this.btnEdit.TabIndex = 7;
-            this.btnEdit.Text = "ویرایش";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            btnEdit.Location = new System.Drawing.Point(761, 12);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new System.Drawing.Size(110, 57);
+            btnEdit.TabIndex = 7;
+            btnEdit.Text = "ویرایش";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(877, 27);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(125, 57);
-            this.btnDelete.TabIndex = 6;
-            this.btnDelete.Text = "حذف";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            btnDelete.Location = new System.Drawing.Point(877, 12);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new System.Drawing.Size(125, 57);
+            btnDelete.TabIndex = 6;
+            btnDelete.Text = "حذف";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
-            // btnAddP
+            // btnAdd
             // 
-            this.btnAddP.Location = new System.Drawing.Point(1008, 27);
-            this.btnAddP.Name = "btnAddP";
-            this.btnAddP.Size = new System.Drawing.Size(105, 57);
-            this.btnAddP.TabIndex = 5;
-            this.btnAddP.Text = "ثبت";
-            this.btnAddP.UseVisualStyleBackColor = true;
-            this.btnAddP.Click += new System.EventHandler(this.btnAddP_Click);
-            // 
-            // PCadmin
-            // 
-            this.PCadmin.DataPropertyName = "PCadmin";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("B Koodak", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.PCadmin.DefaultCellStyle = dataGridViewCellStyle1;
-            this.PCadmin.HeaderText = "کد پرسنلی";
-            this.PCadmin.MinimumWidth = 6;
-            this.PCadmin.Name = "PCadmin";
-            this.PCadmin.ReadOnly = true;
-            this.PCadmin.Width = 150;
-            // 
-            // nadminDataGridViewTextBoxColumn
-            // 
-            this.nadminDataGridViewTextBoxColumn.DataPropertyName = "Nadmin";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("B Koodak", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.nadminDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.nadminDataGridViewTextBoxColumn.HeaderText = "نام";
-            this.nadminDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nadminDataGridViewTextBoxColumn.Name = "nadminDataGridViewTextBoxColumn";
-            this.nadminDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nadminDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // ladminDataGridViewTextBoxColumn
-            // 
-            this.ladminDataGridViewTextBoxColumn.DataPropertyName = "Ladmin";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("B Koodak", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.ladminDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ladminDataGridViewTextBoxColumn.HeaderText = "نام خانوادگی";
-            this.ladminDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.ladminDataGridViewTextBoxColumn.Name = "ladminDataGridViewTextBoxColumn";
-            this.ladminDataGridViewTextBoxColumn.ReadOnly = true;
-            this.ladminDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // nCadminDataGridViewTextBoxColumn
-            // 
-            this.nCadminDataGridViewTextBoxColumn.DataPropertyName = "NCadmin";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("B Koodak", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.nCadminDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.nCadminDataGridViewTextBoxColumn.HeaderText = "کد ملی";
-            this.nCadminDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nCadminDataGridViewTextBoxColumn.Name = "nCadminDataGridViewTextBoxColumn";
-            this.nCadminDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nCadminDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // uadminDataGridViewTextBoxColumn
-            // 
-            this.uadminDataGridViewTextBoxColumn.DataPropertyName = "Uadmin";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("B Koodak", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.uadminDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            this.uadminDataGridViewTextBoxColumn.HeaderText = "نام کاربری";
-            this.uadminDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.uadminDataGridViewTextBoxColumn.Name = "uadminDataGridViewTextBoxColumn";
-            this.uadminDataGridViewTextBoxColumn.ReadOnly = true;
-            this.uadminDataGridViewTextBoxColumn.Width = 160;
-            // 
-            // padminDataGridViewTextBoxColumn
-            // 
-            this.padminDataGridViewTextBoxColumn.DataPropertyName = "Padmin";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("B Koodak", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.padminDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
-            this.padminDataGridViewTextBoxColumn.HeaderText = "گزواژه";
-            this.padminDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.padminDataGridViewTextBoxColumn.Name = "padminDataGridViewTextBoxColumn";
-            this.padminDataGridViewTextBoxColumn.ReadOnly = true;
-            this.padminDataGridViewTextBoxColumn.Width = 160;
-            // 
-            // pICadminDataGridViewTextBoxColumn
-            // 
-            this.pICadminDataGridViewTextBoxColumn.DataPropertyName = "PICadmin";
-            this.pICadminDataGridViewTextBoxColumn.HeaderText = "PICadmin";
-            this.pICadminDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.pICadminDataGridViewTextBoxColumn.Name = "pICadminDataGridViewTextBoxColumn";
-            this.pICadminDataGridViewTextBoxColumn.ReadOnly = true;
-            this.pICadminDataGridViewTextBoxColumn.Visible = false;
-            this.pICadminDataGridViewTextBoxColumn.Width = 125;
+            btnAdd.Location = new System.Drawing.Point(1008, 12);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new System.Drawing.Size(105, 57);
+            btnAdd.TabIndex = 5;
+            btnAdd.Text = "جدید";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // adminBindingSource
             // 
-            this.adminBindingSource.DataMember = "Admin";
-            this.adminBindingSource.DataSource = this.hardware_IDDataSet;
+            adminBindingSource.DataSource = typeof(Models.Admin);
             // 
-            // hardware_IDDataSet
+            // dgvAdmins
             // 
-            this.hardware_IDDataSet.DataSetName = "Hardware_IDDataSet";
-            this.hardware_IDDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            dgvAdmins.AllowUserToAddRows = false;
+            dgvAdmins.AllowUserToDeleteRows = false;
+            dgvAdmins.AutoGenerateColumns = false;
+            dgvAdmins.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAdmins.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Column1, imagePathDataGridViewTextBoxColumn, firstNameDataGridViewTextBoxColumn, lastNameDataGridViewTextBoxColumn, nationalCodeDataGridViewTextBoxColumn, usernameDataGridViewTextBoxColumn });
+            dgvAdmins.DataSource = adminBindingSource;
+            dgvAdmins.Location = new System.Drawing.Point(-1, 75);
+            dgvAdmins.Name = "dgvAdmins";
+            dgvAdmins.ReadOnly = true;
+            dgvAdmins.RowHeadersWidth = 51;
+            dgvAdmins.Size = new System.Drawing.Size(1128, 478);
+            dgvAdmins.TabIndex = 8;
             // 
-            // adminTableAdapter
+            // Column1
             // 
-            this.adminTableAdapter.ClearBeforeFill = true;
+            Column1.DataPropertyName = "Id";
+            Column1.HeaderText = "Id";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            Column1.Visible = false;
+            Column1.Width = 125;
+            // 
+            // imagePathDataGridViewTextBoxColumn
+            // 
+            imagePathDataGridViewTextBoxColumn.DataPropertyName = "ImagePath";
+            imagePathDataGridViewTextBoxColumn.HeaderText = "ImagePath";
+            imagePathDataGridViewTextBoxColumn.MinimumWidth = 6;
+            imagePathDataGridViewTextBoxColumn.Name = "imagePathDataGridViewTextBoxColumn";
+            imagePathDataGridViewTextBoxColumn.ReadOnly = true;
+            imagePathDataGridViewTextBoxColumn.Visible = false;
+            imagePathDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            firstNameDataGridViewTextBoxColumn.HeaderText = "نام";
+            firstNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            firstNameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            lastNameDataGridViewTextBoxColumn.HeaderText = "نام خانوادگی";
+            lastNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            lastNameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // nationalCodeDataGridViewTextBoxColumn
+            // 
+            nationalCodeDataGridViewTextBoxColumn.DataPropertyName = "NationalCode";
+            nationalCodeDataGridViewTextBoxColumn.HeaderText = "کد ملی";
+            nationalCodeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            nationalCodeDataGridViewTextBoxColumn.Name = "nationalCodeDataGridViewTextBoxColumn";
+            nationalCodeDataGridViewTextBoxColumn.ReadOnly = true;
+            nationalCodeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // usernameDataGridViewTextBoxColumn
+            // 
+            usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
+            usernameDataGridViewTextBoxColumn.HeaderText = "نام کاربری";
+            usernameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
+            usernameDataGridViewTextBoxColumn.ReadOnly = true;
+            usernameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // adminBindingSource1
+            // 
+            adminBindingSource1.DataSource = typeof(Models.Admin);
             // 
             // listAdmin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 34F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1125, 553);
-            this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnAddP);
-            this.Controls.Add(this.dataGridView1);
-            this.Font = new System.Drawing.Font("B Koodak", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.Name = "listAdmin";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "مدیران";
-            this.Load += new System.EventHandler(this.listAdmin_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adminBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hardware_IDDataSet)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(13F, 34F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1125, 553);
+            Controls.Add(dgvAdmins);
+            Controls.Add(btnEdit);
+            Controls.Add(btnDelete);
+            Controls.Add(btnAdd);
+            Font = new System.Drawing.Font("B Koodak", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 178);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            Name = "listAdmin";
+            RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "مدیران";
+            Load += listAdmin_Load;
+            ((System.ComponentModel.ISupportInitialize)adminBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAdmins).EndInit();
+            ((System.ComponentModel.ISupportInitialize)adminBindingSource1).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private Hardware_IDDataSet hardware_IDDataSet;
-        private System.Windows.Forms.BindingSource adminBindingSource;
-        private Hardware_IDDataSetTableAdapters.AdminTableAdapter adminTableAdapter;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnAddP;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridViewTextBoxColumn PCadmin;
         private System.Windows.Forms.DataGridViewTextBoxColumn nadminDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ladminDataGridViewTextBoxColumn;
@@ -247,5 +190,14 @@ namespace Hardware_ID
         private System.Windows.Forms.DataGridViewTextBoxColumn uadminDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn padminDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pICadminDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource adminBindingSource;
+        private System.Windows.Forms.BindingSource adminBindingSource1;
+        public System.Windows.Forms.DataGridView dgvAdmins;
+        private System.Windows.Forms.DataGridViewTextBoxColumn imagePathDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nationalCodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
     }
 }

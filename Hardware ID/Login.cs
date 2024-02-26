@@ -36,27 +36,27 @@ namespace Hardware_ID
                 txtPassword.Enabled = false;
                 timer1.Enabled = true;
             }
-            adminTableAdapter.FillByUserPasswordAdmin(hardware_IDDataSet.Admin, txtUserName.Text, txtPassword.Text);
-            if (hardware_IDDataSet.Admin.Rows.Count > 0)
-            {
-                successed = true;
-                notifyIcon1.BalloonTipText = "به برنامه شناسنامه سخت افزاری خوش آمدید";
-                notifyIcon1.BalloonTipTitle = "Admin";
-                notifyIcon1.Icon = SystemIcons.Information;
-                notifyIcon1.ShowBalloonTip(10);
-                this.Hide();
-                Mane main = new Mane();
+            //adminTableAdapter.FillByUserPasswordAdmin(hardware_IDDataSet.Admin, txtUserName.Text, txtPassword.Text);
+            //if (hardware_IDDataSet.Admin.Rows.Count > 0)
+            //{
+            //    successed = true;
+            //    notifyIcon1.BalloonTipText = "به برنامه شناسنامه سخت افزاری خوش آمدید";
+            //    notifyIcon1.BalloonTipTitle = "Admin";
+            //    notifyIcon1.Icon = SystemIcons.Information;
+            //    notifyIcon1.ShowBalloonTip(10);
+            //    this.Hide();
+            //    Main main = new Main();
                 
 
-                main.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("نام کاربری یا گذرواژه اشتباه است");
-                txtUserName.Clear();
-                txtPassword.Clear();
-                txtUserName.Focus();
-            }
+            //    main.ShowDialog();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("نام کاربری یا گذرواژه اشتباه است");
+            //    txtUserName.Clear();
+            //    txtPassword.Clear();
+            //    txtUserName.Focus();
+            //}
             
         }
         private void btnExit_Click(object sender, EventArgs e)
@@ -79,7 +79,7 @@ namespace Hardware_ID
         private void Login_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'hardware_IDDataSet.Admin' table. You can move, or remove it, as needed.
-            this.adminTableAdapter.Fill(this.hardware_IDDataSet.Admin);
+            //this.adminTableAdapter.Fill(this.hardware_IDDataSet.Admin);
 
         }
     }

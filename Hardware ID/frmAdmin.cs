@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Hardware_ID.DatabaseContext;
+using Hardware_ID.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,122 +14,79 @@ namespace Hardware_ID
 {
     public partial class frmAdmin : Form
     {
-        public bool update;
-        public int PCadmin;
-        public frmAdmin()
+        public int adminId;
+        private listAdmin _listAdmin;
+
+        public frmAdmin(listAdmin listAdmin)
         {
             InitializeComponent();
+
+            _listAdmin = listAdmin;
         }
 
         private void frmAdmin_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'hardware_IDDataSet.Admin' table. You can move, or remove it, as needed.
-            this.adminTableAdapter.Fill(this.hardware_IDDataSet.Admin);
-            if (update == true)
+            if (adminId != 0)
             {
-                adminTableAdapter.FillByPCadmin(hardware_IDDataSet.Admin, PCadmin);
-                if (hardware_IDDataSet.Admin.Rows.Count > 0)
-                {
-                    txtPersonnalCode.Text = hardware_IDDataSet.Admin.Rows[0]["PCadmin"].ToString();
-                    txtFirstName.Text = hardware_IDDataSet.Admin.Rows[0]["Nadmin"].ToString();
-                    txtLastName.Text = hardware_IDDataSet.Admin.Rows[0]["Ladmin"].ToString();
-                    txtCode.Text = hardware_IDDataSet.Admin.Rows[0]["NCadmin"].ToString();
-                    txtUserName.Text = hardware_IDDataSet.Admin.Rows[0]["Uadmin"].ToString();
-                    txtPassword.Text = hardware_IDDataSet.Admin.Rows[0]["Padmin"].ToString();
-                }
+                var db = DbContextSingleton.GetInstance();
+                var adminSelected = db.Admins.Find(adminId);
+
+                //txtPersonelCode.Text = adminSelected;
+                txtFirstName.Text = adminSelected.FirstName;
+                txtLastName.Text = adminSelected.LastName;
+                txtNationalCode.Text = adminSelected.NationalCode;
+                txtUserName.Text = adminSelected.Username;
+                txtPassword.Text = adminSelected.Password;
             }
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (txtPersonnalCode.Text.Length < 4)
-            {
-                if (MessageBox.Show("تعداد کاراکتر های کد پرسنلی کمتر از 4 رقم است", "خطا", MessageBoxButtons.RetryCancel) == DialogResult.Retry)
-                {
-                    txtPersonnalCode.Clear();
-                    txtPersonnalCode.Focus();
-                    return;
-                }
-            }
-            if (txtCode.Text.Length < 10)
+            if (txtNationalCode.Text.Length < 10)
             {
                 if (MessageBox.Show("تعداد کاراکتر های کد ملی کمتر از 10 رقم است", "خطا", MessageBoxButtons.RetryCancel) == DialogResult.Retry)
                 {
-                    txtCode.Clear();
-                    txtCode.Focus();
+                    txtNationalCode.Clear();
+                    txtNationalCode.Focus();
                     return;
                 }
             }
-            try
-            {
-                if (update == false)
-                    adminTableAdapter.InsertQuery(int.Parse(txtPersonnalCode.Text), txtFirstName.Text, txtLastName.Text, txtCode.Text, txtUserName.Text, txtPassword.Text, null);
-                else
-                    adminTableAdapter.UpdateQuery(int.Parse(txtPersonnalCode.Text), txtFirstName.Text, txtLastName.Text, txtCode.Text, txtUserName.Text, txtPassword.Text, null, PCadmin);
-                MessageBox.Show("ثبت اطلاعات با موفقیت انجام شد");
-                this.Close();
-            }
-            catch
-            {
-                MessageBox.Show("ثبت اطلاعات با شکست مواجه شد", "خطا");
-            }
-        }
 
-        private void btnBacke_Click(object sender, EventArgs e)
-        {
+            var db = DbContextSingleton.GetInstance();
+
+            if (adminId != 0)
+            {
+                Admin adminSelected = db.Admins.Find(adminId);
+                adminSelected.Username = txtUserName.Text;
+                adminSelected.Password = txtPassword.Text;
+                adminSelected.FirstName = txtFirstName.Text;
+                adminSelected.LastName = txtLastName.Text;
+                adminSelected.NationalCode = txtNationalCode.Text;
+                db.Admins.Update(adminSelected);
+            }
+            else
+            {
+                var adminNew = new Admin()
+                {
+                    Username = txtUserName.Text,
+                    Password = txtPassword.Text,
+                    FirstName = txtFirstName.Text,
+                    LastName = txtLastName.Text,
+                    NationalCode = txtNationalCode.Text,
+                    ImagePath = string.Empty
+                };
+                db.Admins.Add(adminNew);
+            }
+
+            if (db.SaveChanges() > 0)
+                _listAdmin.Reload();
+
             this.Close();
         }
 
-        private void txtPersonnalCode_TextChanged(object sender, EventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void txtPersonnalCode_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                txtCode.Focus();
-        }
-
-        private void txtCode_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                txtFirstName.Focus();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtFirstName_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                txtLastName.Focus();
-        }
-
-        private void txtLastName_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                txtUserName.Focus();
-        }
-
-        private void txtUserName_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                txtPassword.Focus();
-        }
-
-        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                btnSave.Focus();
+            this.Close();
         }
     }
 }

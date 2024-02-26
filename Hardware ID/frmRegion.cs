@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Hardware_ID.DatabaseContext;
+using Hardware_ID.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,101 +9,63 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Hardware_ID
 {
     public partial class frmRegion : Form
     {
-        public frmRegion()
+        public int regioId { get; set; }
+        public listRegion _listRegion { get; set; }
+
+        public frmRegion(listRegion listRegion)
         {
             InitializeComponent();
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if(txtCregion.Text.Length<3)
-            {
-                if (MessageBox.Show("تعداد کاراکتر های کد سازمان کمتر از 3 رقم است", "خطا", MessageBoxButtons.RetryCancel) == DialogResult.Retry)
-                {
-                    txtCregion.Clear();
-                    txtCregion.Focus();
-                    return;
-                }
-            }
-            try
-            {
-                regionTableAdapter.InsertQueryRegion(int.Parse(txtCregion.Text), txtNregion.Text);
-                MessageBox.Show("ثبت اطلاعات با موفقیت انجام شد");
-                this.Close();
-            }
-            catch
-            {
-                MessageBox.Show("ثبت اطلاعات با شکست مواجه شد", "خطا");
-            }
-        }
-
-        private void button1_MouseHover(object sender, EventArgs e)
-        {
-            btnSave.BackColor = Color.LightSeaGreen;
-        }
-
-        private void btnSave_MouseLeave(object sender, EventArgs e)
-        {
-            btnSave.BackColor = Color.Turquoise;
-        }
-
-        private void btnBacke_MouseHover(object sender, EventArgs e)
-        {
-            btnBacke.BackColor = Color.LightSeaGreen;
-        }
-
-        private void btnBacke_MouseLeave(object sender, EventArgs e)
-        {
-            btnBacke.BackColor = Color.Turquoise;
-        }
-
-        private void btnBacke_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            _listRegion = listRegion;
         }
 
         private void frmRegion_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'hardware_IDDataSet.Region' table. You can move, or remove it, as needed.
-            this.regionTableAdapter.Fill(this.hardware_IDDataSet.Region);
+            if (regioId != 0)
+            {
+                var db = DbContextSingleton.GetInstance();
+                Models.Region regionSelected = db.Regions.Find(regioId);
 
+                txtCode.Text = regionSelected.Name;
+                txtName.Text = regionSelected.Name;
+            }
         }
 
-        private void txtCregion_TextChanged(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
+            var db = DbContextSingleton.GetInstance();
 
+            if (regioId != 0)
+            {
+                Models.Region regionSelected = db.Regions.Find(regioId);
+                regionSelected.Name = txtName.Text;
+                regionSelected.Code = txtCode.Text;
+                db.Regions.Update(regionSelected);
+            }
+            else
+            {
+                var regionNew = new Models.Region()
+                {
+                    Name = txtName.Text,
+                    Code = txtCode.Text,
+                };
+                db.Regions.Add(regionNew);
+            }
+
+            if (db.SaveChanges() > 0)
+                _listRegion.Reload();
+
+            this.Close();
         }
 
-        private void txtCregion_KeyDown(object sender, KeyEventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-                txtNregion.Focus();
-        }
-
-        private void txtNregion_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                btnSave.Focus();
+            this.Close();
         }
     }
 }

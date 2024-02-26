@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Hardware_ID.DatabaseContext;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,39 +19,51 @@ namespace Hardware_ID
             InitializeComponent();
         }
 
-        private void listAdmin_Load(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'hardware_IDDataSet.Admin' table. You can move, or remove it, as needed.
-            this.adminTableAdapter.Fill(this.hardware_IDDataSet.Admin);
-
-        }
-
-        private void btnAddP_Click(object sender, EventArgs e)
-        {
-            frmAdmin formparts = new frmAdmin();
-            formparts.ShowDialog();
-            this.adminTableAdapter.Fill(this.hardware_IDDataSet.Admin);
+            frmAdmin frm = new frmAdmin(this);
+            frm.ShowDialog();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            frmAdmin newadmin = new frmAdmin();
-            newadmin.update = true;
-            newadmin.PCadmin = int.Parse(dataGridView1.CurrentRow.Cells["PCadmin"].Value.ToString());
+            frmAdmin newadmin = new frmAdmin(this);
+            newadmin.adminId = GetSelectedId();
             newadmin.ShowDialog();
-            this.adminTableAdapter.Fill(this.hardware_IDDataSet.Admin);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            int numberadmin = int.Parse(dataGridView1.CurrentRow.Cells["PCadmin"].Value.ToString());
             DialogResult result = MessageBox.Show("آیا از حذف این رکورد اطمینان دارید", "تاییدیه حذف", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                adminTableAdapter.DeleteQuery(numberadmin);
-                this.adminTableAdapter.Fill(this.hardware_IDDataSet.Admin);
-                MessageBox.Show("با موفقیت حذف شد");
+                var db = DbContextSingleton.GetInstance();
+                var admin = db.Admins.Single(a => a.Id == GetSelectedId());
+                db.Admins.Remove(admin);
+                if (db.SaveChanges() > 0)
+                    Reload();
+                else
+                    MessageBox.Show("با شکست مواجه شد");
             }
+        }
+
+        private void listAdmin_Load(object sender, EventArgs e)
+        {
+            Reload();
+        }
+
+        public void Reload()
+        {
+            var db = DbContextSingleton.GetInstance();
+            db = new HdDbContext();
+            db.Database.EnsureCreated();
+            db.Admins.Load();
+            this.adminBindingSource.DataSource = db.Admins.Local.ToBindingList();
+        }
+
+        public int GetSelectedId()
+        {
+            return Convert.ToInt32(dgvAdmins.CurrentRow.Cells[0].Value);
         }
     }
 }
