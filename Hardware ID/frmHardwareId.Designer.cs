@@ -47,7 +47,7 @@ namespace Hardware_ID
             label5 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             groupBox3 = new System.Windows.Forms.GroupBox();
-            chkStatus = new System.Windows.Forms.CheckBox();
+            chkIsTransferred = new System.Windows.Forms.CheckBox();
             txtEndDate = new System.Windows.Forms.TextBox();
             label6 = new System.Windows.Forms.Label();
             txtStartDate = new System.Windows.Forms.TextBox();
@@ -125,7 +125,6 @@ namespace Hardware_ID
             label7.Size = new System.Drawing.Size(94, 36);
             label7.TabIndex = 6;
             label7.Text = "نام سازمان :";
-            label7.Click += label7_Click;
             // 
             // lblPersonnalCode
             // 
@@ -234,7 +233,6 @@ namespace Hardware_ID
             label5.Size = new System.Drawing.Size(139, 34);
             label5.TabIndex = 4;
             label5.Text = "شماره اموال قطعه :";
-            label5.Click += label5_Click;
             // 
             // label4
             // 
@@ -250,7 +248,7 @@ namespace Hardware_ID
             // groupBox3
             // 
             groupBox3.BackColor = System.Drawing.Color.White;
-            groupBox3.Controls.Add(chkStatus);
+            groupBox3.Controls.Add(chkIsTransferred);
             groupBox3.Controls.Add(txtEndDate);
             groupBox3.Controls.Add(label6);
             groupBox3.Controls.Add(txtStartDate);
@@ -263,15 +261,15 @@ namespace Hardware_ID
             groupBox3.TabStop = false;
             groupBox3.Text = "تاریخ تحویل";
             // 
-            // chkStatus
+            // chkIsTransferred
             // 
-            chkStatus.AutoSize = true;
-            chkStatus.Location = new System.Drawing.Point(270, 43);
-            chkStatus.Name = "chkStatus";
-            chkStatus.Size = new System.Drawing.Size(97, 43);
-            chkStatus.TabIndex = 2;
-            chkStatus.Text = "وضعیت";
-            chkStatus.UseVisualStyleBackColor = true;
+            chkIsTransferred.AutoSize = true;
+            chkIsTransferred.Location = new System.Drawing.Point(151, 45);
+            chkIsTransferred.Name = "chkIsTransferred";
+            chkIsTransferred.Size = new System.Drawing.Size(166, 43);
+            chkIsTransferred.TabIndex = 2;
+            chkIsTransferred.Text = "تحویل داده شده";
+            chkIsTransferred.UseVisualStyleBackColor = true;
             // 
             // txtEndDate
             // 
@@ -280,7 +278,6 @@ namespace Hardware_ID
             txtEndDate.Size = new System.Drawing.Size(292, 47);
             txtEndDate.TabIndex = 1;
             txtEndDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            txtEndDate.TextChanged += textBox1_TextChanged;
             // 
             // label6
             // 
@@ -292,28 +289,25 @@ namespace Hardware_ID
             label6.Size = new System.Drawing.Size(102, 34);
             label6.TabIndex = 6;
             label6.Text = "پایان تحویل :";
-            label6.Click += label2_Click;
             // 
             // txtStartDate
             // 
-            txtStartDate.Location = new System.Drawing.Point(806, 40);
+            txtStartDate.Location = new System.Drawing.Point(792, 43);
             txtStartDate.Name = "txtStartDate";
             txtStartDate.Size = new System.Drawing.Size(292, 47);
             txtStartDate.TabIndex = 0;
             txtStartDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            txtStartDate.TextChanged += textBox1_TextChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.BackColor = System.Drawing.Color.White;
             label2.Font = new System.Drawing.Font("B Koodak", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 178);
-            label2.Location = new System.Drawing.Point(1104, 43);
+            label2.Location = new System.Drawing.Point(1093, 46);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(102, 34);
+            label2.Size = new System.Drawing.Size(109, 34);
             label2.TabIndex = 6;
-            label2.Text = "زمان تحویل :";
-            label2.Click += label2_Click;
+            label2.Text = "شروع تحویل :";
             // 
             // btnBack
             // 
@@ -326,7 +320,7 @@ namespace Hardware_ID
             btnBack.TabIndex = 1;
             btnBack.Text = "بازگشت";
             btnBack.UseVisualStyleBackColor = false;
-            btnBack.Click += btnBacke_Click;
+            btnBack.Click += btnBack_Click;
             // 
             // btnSave
             // 
@@ -388,7 +382,7 @@ namespace Hardware_ID
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtStartDate;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox chkStatus;
+        private System.Windows.Forms.CheckBox chkIsTransferred;
         private System.Windows.Forms.TextBox txtEndDate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnBack;

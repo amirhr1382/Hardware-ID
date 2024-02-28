@@ -31,7 +31,7 @@ namespace Hardware_ID
                 var db = DbContextSingleton.GetInstance();
                 var adminSelected = db.Admins.Find(adminId);
 
-                //txtPersonelCode.Text = adminSelected;
+                txtPersonelCode.Text = adminSelected.PersonelCode;
                 txtFirstName.Text = adminSelected.FirstName;
                 txtLastName.Text = adminSelected.LastName;
                 txtNationalCode.Text = adminSelected.NationalCode;

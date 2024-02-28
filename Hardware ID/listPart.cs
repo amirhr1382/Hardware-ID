@@ -34,16 +34,22 @@ namespace Hardware_ID
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("آیا از حذف این رکورد اطمینان دارید", "تاییدیه حذف", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            var db = DbContextSingleton.GetInstance();
+            int hdCount = db.HardwareIds.Count(h => h.PartId == GetSelectedId());
+            if (hdCount > 0)
+                MessageBox.Show($"تعداد {hdCount} شناسنامه سخت افزاری برای این قطعه ثبت شده است.", "امکان حذف وجود ندارد", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
             {
-                var db = DbContextSingleton.GetInstance();
-                var part = db.Parts.Single(a => a.Id == GetSelectedId());
-                db.Parts.Remove(part);
-                if (db.SaveChanges() > 0)
-                    Reload();
-                else
-                    MessageBox.Show("با شکست مواجه شد");
+                DialogResult result = MessageBox.Show("آیا از حذف این رکورد اطمینان دارید", "تاییدیه حذف", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    var part = db.Parts.Single(a => a.Id == GetSelectedId());
+                    db.Parts.Remove(part);
+                    if (db.SaveChanges() > 0)
+                        Reload();
+                    else
+                        MessageBox.Show("با شکست مواجه شد");
+                }
             }
         }
 
@@ -85,9 +91,13 @@ namespace Hardware_ID
                 switch (comboBoxSearchType.SelectedIndex)
                 {
                     case 0:
-                        query = db.Parts.Where(a => (a.Name).Contains(txtSearchBox.Text));
+                        query = db.Parts.Where(a => a.Name.Contains(txtSearchBox.Text));
                         break;
                     case 1:
+                        query = db.Parts.Where(a => a.Model.Contains(txtSearchBox.Text));
+                        break;
+                    case 2:
+                        query = db.Parts.Where(a => a.Number.Contains(txtSearchBox.Text));
                         break;
                     default:
                         break;

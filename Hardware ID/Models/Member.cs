@@ -16,6 +16,7 @@ namespace Hardware_ID.Models
         public string NationalCode { get; set; }
         public string Mobile { get; set; }
         public string ImagePath { get; set; }
+        public bool IsEnable { get; set; }
 
         public virtual ObservableCollectionListSource<HardwareId> HardwareIds { get; } = new();
     }

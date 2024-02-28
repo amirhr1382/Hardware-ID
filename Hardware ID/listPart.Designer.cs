@@ -37,11 +37,11 @@ namespace Hardware_ID
             comboBoxSearchType = new System.Windows.Forms.ComboBox();
             label1 = new System.Windows.Forms.Label();
             dgvParts = new System.Windows.Forms.DataGridView();
-            partBindingSource = new System.Windows.Forms.BindingSource(components);
             idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            partBindingSource = new System.Windows.Forms.BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)dgvParts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)partBindingSource).BeginInit();
             SuspendLayout();
@@ -88,7 +88,7 @@ namespace Hardware_ID
             // 
             comboBoxSearchType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxSearchType.FormattingEnabled = true;
-            comboBoxSearchType.Items.AddRange(new object[] { "نام" });
+            comboBoxSearchType.Items.AddRange(new object[] { "نام", "مدل", "شماره اموال" });
             comboBoxSearchType.Location = new System.Drawing.Point(281, 40);
             comboBoxSearchType.Name = "comboBoxSearchType";
             comboBoxSearchType.Size = new System.Drawing.Size(121, 42);
@@ -106,20 +106,19 @@ namespace Hardware_ID
             // 
             // dgvParts
             // 
+            dgvParts.AllowUserToAddRows = false;
+            dgvParts.AllowUserToDeleteRows = false;
             dgvParts.AutoGenerateColumns = false;
             dgvParts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvParts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { idDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, modelDataGridViewTextBoxColumn, numberDataGridViewTextBoxColumn });
             dgvParts.DataSource = partBindingSource;
             dgvParts.Location = new System.Drawing.Point(2, 105);
             dgvParts.Name = "dgvParts";
+            dgvParts.ReadOnly = true;
             dgvParts.RowHeadersWidth = 51;
             dgvParts.Size = new System.Drawing.Size(789, 543);
             dgvParts.TabIndex = 13;
             dgvParts.DoubleClick += dgvParts_DoubleClick;
-            // 
-            // partBindingSource
-            // 
-            partBindingSource.DataSource = typeof(Models.Part);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -127,6 +126,7 @@ namespace Hardware_ID
             idDataGridViewTextBoxColumn.HeaderText = "Id";
             idDataGridViewTextBoxColumn.MinimumWidth = 6;
             idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            idDataGridViewTextBoxColumn.ReadOnly = true;
             idDataGridViewTextBoxColumn.Visible = false;
             idDataGridViewTextBoxColumn.Width = 125;
             // 
@@ -136,6 +136,7 @@ namespace Hardware_ID
             nameDataGridViewTextBoxColumn.HeaderText = "نام";
             nameDataGridViewTextBoxColumn.MinimumWidth = 6;
             nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            nameDataGridViewTextBoxColumn.ReadOnly = true;
             nameDataGridViewTextBoxColumn.Width = 125;
             // 
             // modelDataGridViewTextBoxColumn
@@ -144,6 +145,7 @@ namespace Hardware_ID
             modelDataGridViewTextBoxColumn.HeaderText = "مدل";
             modelDataGridViewTextBoxColumn.MinimumWidth = 6;
             modelDataGridViewTextBoxColumn.Name = "modelDataGridViewTextBoxColumn";
+            modelDataGridViewTextBoxColumn.ReadOnly = true;
             modelDataGridViewTextBoxColumn.Width = 125;
             // 
             // numberDataGridViewTextBoxColumn
@@ -152,7 +154,12 @@ namespace Hardware_ID
             numberDataGridViewTextBoxColumn.HeaderText = "شماره اموال";
             numberDataGridViewTextBoxColumn.MinimumWidth = 6;
             numberDataGridViewTextBoxColumn.Name = "numberDataGridViewTextBoxColumn";
+            numberDataGridViewTextBoxColumn.ReadOnly = true;
             numberDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // partBindingSource
+            // 
+            partBindingSource.DataSource = typeof(Models.Part);
             // 
             // listPart
             // 

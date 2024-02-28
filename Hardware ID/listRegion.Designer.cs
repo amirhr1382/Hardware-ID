@@ -32,6 +32,7 @@ namespace Hardware_ID
             components = new System.ComponentModel.Container();
             dgvRegions = new System.Windows.Forms.DataGridView();
             idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             regionBindingSource = new System.Windows.Forms.BindingSource(components);
             btnAdd = new System.Windows.Forms.Button();
@@ -45,20 +46,19 @@ namespace Hardware_ID
             // 
             dgvRegions.AllowUserToAddRows = false;
             dgvRegions.AllowUserToDeleteRows = false;
-            dgvRegions.AllowUserToOrderColumns = true;
             dgvRegions.AutoGenerateColumns = false;
             dgvRegions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRegions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { idDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn });
+            dgvRegions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { idDataGridViewTextBoxColumn, codeDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn });
             dgvRegions.DataSource = regionBindingSource;
             dgvRegions.Dock = System.Windows.Forms.DockStyle.Bottom;
-            dgvRegions.Location = new System.Drawing.Point(0, 97);
+            dgvRegions.Location = new System.Drawing.Point(0, 76);
             dgvRegions.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             dgvRegions.Name = "dgvRegions";
             dgvRegions.ReadOnly = true;
             dgvRegions.RowHeadersWidth = 51;
             dgvRegions.RowTemplate.Height = 30;
             dgvRegions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dgvRegions.Size = new System.Drawing.Size(557, 309);
+            dgvRegions.Size = new System.Drawing.Size(557, 330);
             dgvRegions.TabIndex = 0;
             dgvRegions.DoubleClick += dgvRegion_DoubleClick;
             // 
@@ -69,12 +69,22 @@ namespace Hardware_ID
             idDataGridViewTextBoxColumn.MinimumWidth = 6;
             idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             idDataGridViewTextBoxColumn.ReadOnly = true;
+            idDataGridViewTextBoxColumn.Visible = false;
             idDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            codeDataGridViewTextBoxColumn.HeaderText = "کد";
+            codeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            codeDataGridViewTextBoxColumn.ReadOnly = true;
+            codeDataGridViewTextBoxColumn.Width = 125;
             // 
             // nameDataGridViewTextBoxColumn
             // 
             nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            nameDataGridViewTextBoxColumn.HeaderText = "نام";
             nameDataGridViewTextBoxColumn.MinimumWidth = 6;
             nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             nameDataGridViewTextBoxColumn.ReadOnly = true;
@@ -145,9 +155,10 @@ namespace Hardware_ID
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cregion;
         private System.Windows.Forms.DataGridViewTextBoxColumn nregionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource regionBindingSource;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
     }
 }

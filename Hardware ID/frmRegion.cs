@@ -31,7 +31,7 @@ namespace Hardware_ID
                 var db = DbContextSingleton.GetInstance();
                 Models.Region regionSelected = db.Regions.Find(regioId);
 
-                txtCode.Text = regionSelected.Name;
+                txtCode.Text = regionSelected.Code;
                 txtName.Text = regionSelected.Name;
             }
         }

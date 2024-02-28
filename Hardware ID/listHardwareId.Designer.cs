@@ -31,38 +31,31 @@ namespace Hardware_ID
         {
             components = new System.ComponentModel.Container();
             dgvHardwareIds = new System.Windows.Forms.DataGridView();
-            idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            memberDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            memberBindingSource = new System.Windows.Forms.BindingSource(components);
-            regionCodeDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            regionBindingSource = new System.Windows.Forms.BindingSource(components);
-            partDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            partBindingSource = new System.Windows.Forms.BindingSource(components);
-            startDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            endDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            isTransferredDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            hardwareIdBindingSource = new System.Windows.Forms.BindingSource(components);
             btnAdd = new System.Windows.Forms.Button();
             btnEdit = new System.Windows.Forms.Button();
             txtSearchBox = new System.Windows.Forms.TextBox();
             comboBoxSearchType = new System.Windows.Forms.ComboBox();
             label1 = new System.Windows.Forms.Label();
+            hardwareIdItemViewModelBindingSource = new System.Windows.Forms.BindingSource(components);
+            idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            personelCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            regionCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            partNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            startDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            endDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            isTransferredDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvHardwareIds).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)memberBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)regionBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)partBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)hardwareIdBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)hardwareIdItemViewModelBindingSource).BeginInit();
             SuspendLayout();
             // 
             // dgvHardwareIds
             // 
             dgvHardwareIds.AllowUserToAddRows = false;
             dgvHardwareIds.AllowUserToDeleteRows = false;
-            dgvHardwareIds.AllowUserToOrderColumns = true;
             dgvHardwareIds.AutoGenerateColumns = false;
             dgvHardwareIds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvHardwareIds.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { idDataGridViewTextBoxColumn, memberDataGridViewComboBoxColumn, regionCodeDataGridViewComboBoxColumn, partDataGridViewComboBoxColumn, startDateDataGridViewTextBoxColumn, endDateDataGridViewTextBoxColumn, isTransferredDataGridViewCheckBoxColumn });
-            dgvHardwareIds.DataSource = hardwareIdBindingSource;
+            dgvHardwareIds.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { idDataGridViewTextBoxColumn, personelCodeDataGridViewTextBoxColumn, regionCodeDataGridViewTextBoxColumn, partNumberDataGridViewTextBoxColumn, startDateDataGridViewTextBoxColumn, endDateDataGridViewTextBoxColumn, isTransferredDataGridViewCheckBoxColumn });
+            dgvHardwareIds.DataSource = hardwareIdItemViewModelBindingSource;
             dgvHardwareIds.Dock = System.Windows.Forms.DockStyle.Bottom;
             dgvHardwareIds.Location = new System.Drawing.Point(0, 124);
             dgvHardwareIds.Name = "dgvHardwareIds";
@@ -72,95 +65,6 @@ namespace Hardware_ID
             dgvHardwareIds.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             dgvHardwareIds.Size = new System.Drawing.Size(1262, 562);
             dgvHardwareIds.TabIndex = 0;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            idDataGridViewTextBoxColumn.HeaderText = "Id";
-            idDataGridViewTextBoxColumn.MinimumWidth = 6;
-            idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            idDataGridViewTextBoxColumn.ReadOnly = true;
-            idDataGridViewTextBoxColumn.Visible = false;
-            idDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // memberDataGridViewComboBoxColumn
-            // 
-            memberDataGridViewComboBoxColumn.DataPropertyName = "Member";
-            memberDataGridViewComboBoxColumn.DataSource = memberBindingSource;
-            memberDataGridViewComboBoxColumn.DisplayMember = "PersonelCode";
-            memberDataGridViewComboBoxColumn.HeaderText = "کد پرسنلی";
-            memberDataGridViewComboBoxColumn.MinimumWidth = 6;
-            memberDataGridViewComboBoxColumn.Name = "memberDataGridViewComboBoxColumn";
-            memberDataGridViewComboBoxColumn.ReadOnly = true;
-            memberDataGridViewComboBoxColumn.ValueMember = "Id";
-            memberDataGridViewComboBoxColumn.Width = 125;
-            // 
-            // memberBindingSource
-            // 
-            memberBindingSource.DataSource = typeof(Models.Member);
-            // 
-            // regionCodeDataGridViewComboBoxColumn
-            // 
-            regionCodeDataGridViewComboBoxColumn.DataPropertyName = "Region";
-            regionCodeDataGridViewComboBoxColumn.DataSource = regionBindingSource;
-            regionCodeDataGridViewComboBoxColumn.DisplayMember = "Name";
-            regionCodeDataGridViewComboBoxColumn.HeaderText = "کد سازمان";
-            regionCodeDataGridViewComboBoxColumn.MinimumWidth = 6;
-            regionCodeDataGridViewComboBoxColumn.Name = "regionCodeDataGridViewComboBoxColumn";
-            regionCodeDataGridViewComboBoxColumn.ReadOnly = true;
-            regionCodeDataGridViewComboBoxColumn.ValueMember = "Id";
-            regionCodeDataGridViewComboBoxColumn.Width = 125;
-            // 
-            // regionBindingSource
-            // 
-            regionBindingSource.DataSource = typeof(Models.Region);
-            // 
-            // partDataGridViewComboBoxColumn
-            // 
-            partDataGridViewComboBoxColumn.DataPropertyName = "Part";
-            partDataGridViewComboBoxColumn.DataSource = partBindingSource;
-            partDataGridViewComboBoxColumn.DisplayMember = "Name";
-            partDataGridViewComboBoxColumn.HeaderText = "شماره اموال قطعه";
-            partDataGridViewComboBoxColumn.MinimumWidth = 6;
-            partDataGridViewComboBoxColumn.Name = "partDataGridViewComboBoxColumn";
-            partDataGridViewComboBoxColumn.ReadOnly = true;
-            partDataGridViewComboBoxColumn.ValueMember = "Id";
-            partDataGridViewComboBoxColumn.Width = 125;
-            // 
-            // partBindingSource
-            // 
-            partBindingSource.DataSource = typeof(Models.Part);
-            // 
-            // startDateDataGridViewTextBoxColumn
-            // 
-            startDateDataGridViewTextBoxColumn.DataPropertyName = "StartDate";
-            startDateDataGridViewTextBoxColumn.HeaderText = "زمان تحویل";
-            startDateDataGridViewTextBoxColumn.MinimumWidth = 6;
-            startDateDataGridViewTextBoxColumn.Name = "startDateDataGridViewTextBoxColumn";
-            startDateDataGridViewTextBoxColumn.ReadOnly = true;
-            startDateDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // endDateDataGridViewTextBoxColumn
-            // 
-            endDateDataGridViewTextBoxColumn.DataPropertyName = "EndDate";
-            endDateDataGridViewTextBoxColumn.HeaderText = "پایان تحویل";
-            endDateDataGridViewTextBoxColumn.MinimumWidth = 6;
-            endDateDataGridViewTextBoxColumn.Name = "endDateDataGridViewTextBoxColumn";
-            endDateDataGridViewTextBoxColumn.ReadOnly = true;
-            endDateDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // isTransferredDataGridViewCheckBoxColumn
-            // 
-            isTransferredDataGridViewCheckBoxColumn.DataPropertyName = "IsTransferred";
-            isTransferredDataGridViewCheckBoxColumn.HeaderText = "وضعیت";
-            isTransferredDataGridViewCheckBoxColumn.MinimumWidth = 6;
-            isTransferredDataGridViewCheckBoxColumn.Name = "isTransferredDataGridViewCheckBoxColumn";
-            isTransferredDataGridViewCheckBoxColumn.ReadOnly = true;
-            isTransferredDataGridViewCheckBoxColumn.Width = 125;
-            // 
-            // hardwareIdBindingSource
-            // 
-            hardwareIdBindingSource.DataSource = typeof(Models.HardwareId);
             // 
             // btnAdd
             // 
@@ -196,7 +100,7 @@ namespace Hardware_ID
             // 
             comboBoxSearchType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxSearchType.FormattingEnabled = true;
-            comboBoxSearchType.Items.AddRange(new object[] { "کد پرسنلی", "شماره اموال", "کد سازمان", "" });
+            comboBoxSearchType.Items.AddRange(new object[] { "کد پرسنلی", "شماره اموال", "کد سازمان" });
             comboBoxSearchType.Location = new System.Drawing.Point(289, 53);
             comboBoxSearchType.Name = "comboBoxSearchType";
             comboBoxSearchType.Size = new System.Drawing.Size(121, 42);
@@ -212,7 +116,75 @@ namespace Hardware_ID
             label1.TabIndex = 10;
             label1.Text = "جستجو بر اساس :";
             // 
-            // listShenasnameh
+            // hardwareIdItemViewModelBindingSource
+            // 
+            hardwareIdItemViewModelBindingSource.DataSource = typeof(ViewModels.HardwareIdItemViewModel);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            idDataGridViewTextBoxColumn.HeaderText = "Id";
+            idDataGridViewTextBoxColumn.MinimumWidth = 6;
+            idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            idDataGridViewTextBoxColumn.ReadOnly = true;
+            idDataGridViewTextBoxColumn.Visible = false;
+            idDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // personelCodeDataGridViewTextBoxColumn
+            // 
+            personelCodeDataGridViewTextBoxColumn.DataPropertyName = "PersonelCode";
+            personelCodeDataGridViewTextBoxColumn.HeaderText = "کد پرسنلی";
+            personelCodeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            personelCodeDataGridViewTextBoxColumn.Name = "personelCodeDataGridViewTextBoxColumn";
+            personelCodeDataGridViewTextBoxColumn.ReadOnly = true;
+            personelCodeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // regionCodeDataGridViewTextBoxColumn
+            // 
+            regionCodeDataGridViewTextBoxColumn.DataPropertyName = "RegionCode";
+            regionCodeDataGridViewTextBoxColumn.HeaderText = "کد سازمان";
+            regionCodeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            regionCodeDataGridViewTextBoxColumn.Name = "regionCodeDataGridViewTextBoxColumn";
+            regionCodeDataGridViewTextBoxColumn.ReadOnly = true;
+            regionCodeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // partNumberDataGridViewTextBoxColumn
+            // 
+            partNumberDataGridViewTextBoxColumn.DataPropertyName = "PartNumber";
+            partNumberDataGridViewTextBoxColumn.HeaderText = "شماره اموال قطعه";
+            partNumberDataGridViewTextBoxColumn.MinimumWidth = 6;
+            partNumberDataGridViewTextBoxColumn.Name = "partNumberDataGridViewTextBoxColumn";
+            partNumberDataGridViewTextBoxColumn.ReadOnly = true;
+            partNumberDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // startDateDataGridViewTextBoxColumn
+            // 
+            startDateDataGridViewTextBoxColumn.DataPropertyName = "StartDate";
+            startDateDataGridViewTextBoxColumn.HeaderText = "شروع تحویل";
+            startDateDataGridViewTextBoxColumn.MinimumWidth = 6;
+            startDateDataGridViewTextBoxColumn.Name = "startDateDataGridViewTextBoxColumn";
+            startDateDataGridViewTextBoxColumn.ReadOnly = true;
+            startDateDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // endDateDataGridViewTextBoxColumn
+            // 
+            endDateDataGridViewTextBoxColumn.DataPropertyName = "EndDate";
+            endDateDataGridViewTextBoxColumn.HeaderText = "پایان تحویل";
+            endDateDataGridViewTextBoxColumn.MinimumWidth = 6;
+            endDateDataGridViewTextBoxColumn.Name = "endDateDataGridViewTextBoxColumn";
+            endDateDataGridViewTextBoxColumn.ReadOnly = true;
+            endDateDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // isTransferredDataGridViewCheckBoxColumn
+            // 
+            isTransferredDataGridViewCheckBoxColumn.DataPropertyName = "IsTransferred";
+            isTransferredDataGridViewCheckBoxColumn.HeaderText = "تحویل داده شده";
+            isTransferredDataGridViewCheckBoxColumn.MinimumWidth = 6;
+            isTransferredDataGridViewCheckBoxColumn.Name = "isTransferredDataGridViewCheckBoxColumn";
+            isTransferredDataGridViewCheckBoxColumn.ReadOnly = true;
+            isTransferredDataGridViewCheckBoxColumn.Width = 125;
+            // 
+            // listHardwareId
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(13F, 34F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -226,16 +198,13 @@ namespace Hardware_ID
             Font = new System.Drawing.Font("B Koodak", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 178);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            Name = "listShenasnameh";
+            Name = "listHardwareId";
             RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "شناسنامه سخت افزاری";
             Load += listShenasnameh_Load;
             ((System.ComponentModel.ISupportInitialize)dgvHardwareIds).EndInit();
-            ((System.ComponentModel.ISupportInitialize)memberBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)regionBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)partBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)hardwareIdBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)hardwareIdItemViewModelBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -266,14 +235,11 @@ namespace Hardware_ID
         private System.Windows.Forms.TextBox txtSearchBox;
         private System.Windows.Forms.ComboBox comboBoxSearchType;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.BindingSource hardwareIdBindingSource;
-        private System.Windows.Forms.BindingSource memberBindingSource;
-        private System.Windows.Forms.BindingSource regionBindingSource;
-        private System.Windows.Forms.BindingSource partBindingSource;
+        private System.Windows.Forms.BindingSource hardwareIdItemViewModelBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn memberDataGridViewComboBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn regionCodeDataGridViewComboBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn partDataGridViewComboBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn personelCodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn regionCodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn partNumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn startDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn endDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isTransferredDataGridViewCheckBoxColumn;

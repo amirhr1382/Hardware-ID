@@ -38,14 +38,16 @@ namespace Hardware_ID
             lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             nationalCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             mobileDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            isEnableDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             memberBindingSource = new System.Windows.Forms.BindingSource(components);
             btnAdd = new System.Windows.Forms.Button();
-            btnDisable = new System.Windows.Forms.Button();
+            btnDelete = new System.Windows.Forms.Button();
             btnEdit = new System.Windows.Forms.Button();
             label1 = new System.Windows.Forms.Label();
             comboBoxSearchType = new System.Windows.Forms.ComboBox();
             txtSearchBox = new System.Windows.Forms.TextBox();
             memberBindingSource1 = new System.Windows.Forms.BindingSource(components);
+            btnDisableOrEnable = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)dgvMembers).BeginInit();
             ((System.ComponentModel.ISupportInitialize)memberBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)memberBindingSource1).BeginInit();
@@ -55,10 +57,9 @@ namespace Hardware_ID
             // 
             dgvMembers.AllowUserToAddRows = false;
             dgvMembers.AllowUserToDeleteRows = false;
-            dgvMembers.AllowUserToOrderColumns = true;
             dgvMembers.AutoGenerateColumns = false;
             dgvMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMembers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { idDataGridViewTextBoxColumn, imagePathDataGridViewTextBoxColumn, personelCodeDataGridViewTextBoxColumn, firstNameDataGridViewTextBoxColumn, lastNameDataGridViewTextBoxColumn, nationalCodeDataGridViewTextBoxColumn, mobileDataGridViewTextBoxColumn });
+            dgvMembers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { idDataGridViewTextBoxColumn, imagePathDataGridViewTextBoxColumn, personelCodeDataGridViewTextBoxColumn, firstNameDataGridViewTextBoxColumn, lastNameDataGridViewTextBoxColumn, nationalCodeDataGridViewTextBoxColumn, mobileDataGridViewTextBoxColumn, isEnableDataGridViewTextBoxColumn });
             dgvMembers.DataSource = memberBindingSource;
             dgvMembers.Dock = System.Windows.Forms.DockStyle.Bottom;
             dgvMembers.Location = new System.Drawing.Point(0, 118);
@@ -136,6 +137,15 @@ namespace Hardware_ID
             mobileDataGridViewTextBoxColumn.ReadOnly = true;
             mobileDataGridViewTextBoxColumn.Width = 125;
             // 
+            // isEnableDataGridViewTextBoxColumn
+            // 
+            isEnableDataGridViewTextBoxColumn.DataPropertyName = "IsEnable";
+            isEnableDataGridViewTextBoxColumn.HeaderText = "فعال";
+            isEnableDataGridViewTextBoxColumn.MinimumWidth = 6;
+            isEnableDataGridViewTextBoxColumn.Name = "isEnableDataGridViewTextBoxColumn";
+            isEnableDataGridViewTextBoxColumn.ReadOnly = true;
+            isEnableDataGridViewTextBoxColumn.Width = 125;
+            // 
             // memberBindingSource
             // 
             memberBindingSource.DataSource = typeof(Models.Member);
@@ -151,19 +161,19 @@ namespace Hardware_ID
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
             // 
-            // btnDisable
+            // btnDelete
             // 
-            btnDisable.Location = new System.Drawing.Point(729, 40);
-            btnDisable.Name = "btnDisable";
-            btnDisable.Size = new System.Drawing.Size(125, 57);
-            btnDisable.TabIndex = 2;
-            btnDisable.Text = "غیر فعال ";
-            btnDisable.UseVisualStyleBackColor = true;
-            btnDisable.Click += btnDisable_Click;
+            btnDelete.Location = new System.Drawing.Point(729, 40);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new System.Drawing.Size(125, 57);
+            btnDelete.TabIndex = 2;
+            btnDelete.Text = "حذف";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnEdit
             // 
-            btnEdit.Location = new System.Drawing.Point(627, 40);
+            btnEdit.Location = new System.Drawing.Point(496, 40);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new System.Drawing.Size(96, 57);
             btnEdit.TabIndex = 3;
@@ -203,16 +213,27 @@ namespace Hardware_ID
             // 
             memberBindingSource1.DataSource = typeof(Models.Member);
             // 
+            // btnDisableOrEnable
+            // 
+            btnDisableOrEnable.Location = new System.Drawing.Point(598, 40);
+            btnDisableOrEnable.Name = "btnDisableOrEnable";
+            btnDisableOrEnable.Size = new System.Drawing.Size(125, 57);
+            btnDisableOrEnable.TabIndex = 7;
+            btnDisableOrEnable.Text = "فعال/غیرفعال";
+            btnDisableOrEnable.UseVisualStyleBackColor = true;
+            btnDisableOrEnable.Click += btnDisableOrEnable_Click;
+            // 
             // listMember
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(13F, 34F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1004, 661);
+            Controls.Add(btnDisableOrEnable);
             Controls.Add(txtSearchBox);
             Controls.Add(comboBoxSearchType);
             Controls.Add(label1);
             Controls.Add(btnEdit);
-            Controls.Add(btnDisable);
+            Controls.Add(btnDelete);
             Controls.Add(btnAdd);
             Controls.Add(dgvMembers);
             Font = new System.Drawing.Font("B Koodak", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 178);
@@ -236,7 +257,7 @@ namespace Hardware_ID
         private System.Windows.Forms.DataGridView dgvMembers;
         //private Hardware_IDDataSetTableAdapters.MemberTableAdapter memberTableAdapter;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnDisable;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.DataGridViewTextBoxColumn PCmemeber;
         private System.Windows.Forms.DataGridViewTextBoxColumn nmemeberDataGridViewTextBoxColumn;
@@ -248,6 +269,7 @@ namespace Hardware_ID
         private System.Windows.Forms.TextBox txtSearchBox;
         private System.Windows.Forms.BindingSource memberBindingSource;
         private System.Windows.Forms.BindingSource memberBindingSource1;
+        private System.Windows.Forms.Button btnDisableOrEnable;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn imagePathDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn personelCodeDataGridViewTextBoxColumn;
@@ -255,5 +277,6 @@ namespace Hardware_ID
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nationalCodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn mobileDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isEnableDataGridViewTextBoxColumn;
     }
 }

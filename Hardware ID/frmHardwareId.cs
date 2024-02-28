@@ -1,5 +1,6 @@
 ﻿using Hardware_ID.DatabaseContext;
 using Hardware_ID.Models;
+using Hardware_ID.Utilities.DateTimeUtilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
@@ -17,15 +18,13 @@ namespace Hardware_ID
 {
     public partial class frmHardwareId : Form
     {
-        public bool update;
         public int hardwareId;
+        public listHardwareId _listHardwareId { get; set; }
 
-        public frmHardwareId()
+        public frmHardwareId(listHardwareId listHardwareId)
         {
             InitializeComponent();
-
-            Application.CurrentCulture = new CultureInfo("fa-IR");
-            dateTimePicker1.CustomFormat = Application.CurrentCulture.DateTimeFormat.ShortDatePattern;
+            _listHardwareId = listHardwareId;
         }
 
         private void frmHardwareId_Load(object sender, EventArgs e)
@@ -43,6 +42,18 @@ namespace Hardware_ID
             cmbPartNumber.ValueMember = "Id";
             cmbPartNumber.DisplayMember = "Number";
             cmbPartNumber.DataSource = db.Parts.ToList();
+
+            if (hardwareId != 0)
+            {
+                var hdSelected = db.HardwareIds.Find(hardwareId);
+
+                cmbPersonelCode.SelectedValue = hdSelected.MemberId;
+                cmbRegionName.SelectedValue = hdSelected.RegionId;
+                cmbPartNumber.SelectedValue = hdSelected.PartId;
+                txtStartDate.Text = DateConvert.GregorianToPersian(hdSelected.StartDate);
+                txtEndDate.Text = DateConvert.GregorianToPersian(hdSelected.EndDate);
+                chkIsTransferred.Checked = hdSelected.IsTransferred;
+            }
         }
 
         private void cmbPersonelCode_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,49 +74,44 @@ namespace Hardware_ID
             txtPartModel.Text = part.Model;
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
+            var db = DbContextSingleton.GetInstance();
 
-        }
+            if (hardwareId != 0)
+            {
+                HardwareId hdSelected = db.HardwareIds.Find(hardwareId);
+                hdSelected.MemberId = Convert.ToInt32(cmbPersonelCode.SelectedValue);
+                hdSelected.RegionId = Convert.ToInt32(cmbRegionName.SelectedValue);
+                hdSelected.PartId = Convert.ToInt32(cmbPartNumber.SelectedValue);
+                hdSelected.StartDate = DateConvert.PersianToGregorian(txtStartDate.Text);
+                hdSelected.EndDate = DateConvert.PersianToGregorian(txtEndDate.Text);
+                hdSelected.IsTransferred = chkIsTransferred.Checked;
+                db.HardwareIds.Update(hdSelected);
+            }
+            else
+            {
+                var hdNew = new HardwareId()
+                {
+                    MemberId = Convert.ToInt32(cmbPersonelCode.SelectedValue),
+                    RegionId = Convert.ToInt32(cmbRegionName.SelectedValue),
+                    PartId = Convert.ToInt32(cmbPartNumber.SelectedValue),
+                    StartDate = DateConvert.PersianToGregorian(txtStartDate.Text),
+                    EndDate = DateConvert.PersianToGregorian(txtEndDate.Text),
+                    IsTransferred = true
+                };
+                db.HardwareIds.Add(hdNew);
+            }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
+            if (db.SaveChanges() > 0)
+                _listHardwareId.Reload();
 
-        }
-
-        private void btnBacke_Click(object sender, EventArgs e)
-        {
             this.Close();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
-            try
-            {
-                /* if (update == false)
-                    // shenasnameTableAdapter.InsertQuery(int.Parse(comboBox1.SelectedValue.ToString()), int.Parse(comboBoxNregion.SelectedValue.ToString()), int.Parse(comboBox2.SelectedValue.ToString()), txtSdata.Text, txtEdata.Text, checkBox1.Checked);
-                 else
-                    // shenasnameTableAdapter.UpdateQuery(int.Parse(comboBox1.SelectedValue.ToString()), int.Parse(comboBoxNregion.SelectedValue.ToString()), int.Parse(comboBox2.SelectedValue.ToString()), txtSdata.Text, txtEdata.Text, checkBox1.Checked, Row);
-                */
-                MessageBox.Show("ثبت اطلاعات با موفقیت انجام شد");
-                this.Close();
-            }
-            catch
-            {
-                MessageBox.Show("ثبت اطلاعات با شکست مواجه شد", "خطا");
-            }
-
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
+            this.Close();
         }
     }
 }

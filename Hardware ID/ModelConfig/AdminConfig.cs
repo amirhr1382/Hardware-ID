@@ -19,6 +19,7 @@ namespace Hardware_ID.ModelConfig
             builder.Property(a => a.Password).IsRequired().HasMaxLength(512);
             builder.Property(a => a.NationalCode).IsRequired().HasMaxLength(16);
             builder.Property(a => a.ImagePath).IsRequired().HasMaxLength(256);
+            builder.Property(a => a.PersonelCode).IsRequired().HasMaxLength(16);
         }
     }
 }

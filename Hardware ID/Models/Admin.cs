@@ -17,5 +17,6 @@ namespace Hardware_ID.Models
         public string Username { get; set; }
         public string Password { get; set; }
         public string ImagePath { get; set; }
+        public string PersonelCode { get; set; }
     }
 }

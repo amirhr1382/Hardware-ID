@@ -41,16 +41,22 @@ namespace Hardware_ID
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("آیا از حذف این رکورد اطمینان دارید", "تاییدیه حذف", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            var db = DbContextSingleton.GetInstance();
+            int hdCount = db.HardwareIds.Count(h => h.RegionId == GetSelectedId());
+            if (hdCount > 0)
+                MessageBox.Show($"تعداد {hdCount} شناسنامه سخت افزاری برای این سازمان ثبت شده است", "امکان حذف وجود ندارد", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
             {
-                var db = DbContextSingleton.GetInstance();
-                var region = db.Regions.Single(a => a.Id == GetSelectedId());
-                db.Regions.Remove(region);
-                if (db.SaveChanges() > 0)
-                    Reload();
-                else
-                    MessageBox.Show("با شکست مواجه شد");
+                DialogResult result = MessageBox.Show("آیا از حذف این رکورد اطمینان دارید", "تاییدیه حذف", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    var region = db.Regions.Single(a => a.Id == GetSelectedId());
+                    db.Regions.Remove(region);
+                    if (db.SaveChanges() > 0)
+                        Reload();
+                    else
+                        MessageBox.Show("با شکست مواجه شد");
+                }
             }
         }
 

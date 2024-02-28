@@ -81,7 +81,8 @@ namespace Hardware_ID
                     FirstName = txtFirstName.Text,
                     LastName = txtLastName.Text,
                     Mobile = txtMobile.Text,
-                    ImagePath = string.Empty
+                    ImagePath = string.Empty,
+                    IsEnable = true,
                 };
                 db.Members.Add(memberNew);
             }

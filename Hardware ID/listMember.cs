@@ -33,18 +33,24 @@ namespace Hardware_ID
             newmember.ShowDialog();
         }
 
-        private void btnDisable_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("آیا از غیر فعال کردن این رکورد اطمینان دارید", "تاییدیه غیر فعال", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            var db = DbContextSingleton.GetInstance();
+            int hdCount = db.HardwareIds.Count(h => h.MemberId == GetSelectedId());
+            if (hdCount > 0)
+                MessageBox.Show($"تعداد {hdCount} شناسنامه سخت افزاری برای این عضو ثبت شده است.", "امکان حذف وجود ندارد", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
             {
-                var db = DbContextSingleton.GetInstance();
-                var member = db.Members.Single(a => a.Id == GetSelectedId());
-                db.Members.Remove(member);
-                if (db.SaveChanges() > 0)
-                    Reload();
-                else
-                    MessageBox.Show("با شکست مواجه شد");
+                DialogResult result = MessageBox.Show("آیا از غیر فعال کردن این رکورد اطمینان دارید", "تاییدیه غیر فعال", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    var member = db.Members.Single(a => a.Id == GetSelectedId());
+                    db.Members.Remove(member);
+                    if (db.SaveChanges() > 0)
+                        Reload();
+                    else
+                        MessageBox.Show("با شکست مواجه شد");
+                }
             }
         }
 
@@ -76,6 +82,15 @@ namespace Hardware_ID
             Reload();
         }
 
+        private void btnDisableOrEnable_Click(object sender, EventArgs e)
+        {
+            var db = DbContextSingleton.GetInstance();
+            Member member = db.Members.Single(m => m.Id == GetSelectedId());
+            member.IsEnable = !member.IsEnable;
+            db.Members.Update(member);
+            Reload();
+        }
+
         public void Reload()
         {
             var db = DbContextSingleton.GetInstance();
@@ -86,10 +101,13 @@ namespace Hardware_ID
                 switch (comboBoxSearchType.SelectedIndex)
                 {
                     case 0:
-                        query = db.Members.Where(a => (a.FirstName + " " + a.LastName)
-                        .Contains(txtSearchBox.Text));
+                        query = db.Members.Where(a => (a.FirstName + " " + a.LastName).Contains(txtSearchBox.Text));
                         break;
                     case 1:
+                        query = db.Members.Where(a => a.NationalCode.Contains(txtSearchBox.Text));
+                        break;
+                    case 2:
+                        query = db.Members.Where(a => a.Mobile.Contains(txtSearchBox.Text));
                         break;
                     default:
                         break;

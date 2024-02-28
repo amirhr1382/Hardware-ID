@@ -49,8 +49,8 @@ namespace Hardware_ID
 
         private void SearchItem_Click(object sender, EventArgs e)
         {
-            //listShenasnameh formshenasname = new listShenasnameh();
-            //formshenasname.ShowDialog();
+            frmSearch frmSearch = new frmSearch();
+            frmSearch.ShowDialog();
         }
 
         private void ExitItem_Click(object sender, EventArgs e)

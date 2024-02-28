@@ -32,22 +32,23 @@ namespace Hardware_ID
             components = new System.ComponentModel.Container();
             bindingSource1 = new System.Windows.Forms.BindingSource(components);
             label1 = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
+            panel1 = new System.Windows.Forms.Panel();
+            btnBack = new System.Windows.Forms.Button();
+            btnSave = new System.Windows.Forms.Button();
             txtNationalCode = new System.Windows.Forms.TextBox();
             lblCode = new System.Windows.Forms.Label();
             txtLastName = new System.Windows.Forms.TextBox();
             lblLastName = new System.Windows.Forms.Label();
+            txtPassword = new System.Windows.Forms.TextBox();
+            txtUserName = new System.Windows.Forms.TextBox();
+            label4 = new System.Windows.Forms.Label();
             txtFirstName = new System.Windows.Forms.TextBox();
+            label3 = new System.Windows.Forms.Label();
             lblFirstName = new System.Windows.Forms.Label();
             txtPersonelCode = new System.Windows.Forms.TextBox();
             lblPersonnalCode = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
-            txtUserName = new System.Windows.Forms.TextBox();
-            label4 = new System.Windows.Forms.Label();
-            txtPassword = new System.Windows.Forms.TextBox();
-            btnBack = new System.Windows.Forms.Button();
-            btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // bindingSource1
@@ -67,127 +68,37 @@ namespace Hardware_ID
             label1.Text = "فرم ثبت مدیران";
             label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // panel1
             // 
-            label2.BackColor = System.Drawing.Color.White;
-            label2.Location = new System.Drawing.Point(12, 120);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(732, 283);
-            label2.TabIndex = 2;
-            // 
-            // txtNationalCode
-            // 
-            txtNationalCode.Location = new System.Drawing.Point(28, 135);
-            txtNationalCode.MaxLength = 10;
-            txtNationalCode.Name = "txtNationalCode";
-            txtNationalCode.Size = new System.Drawing.Size(256, 42);
-            txtNationalCode.TabIndex = 8;
-            txtNationalCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblCode
-            // 
-            lblCode.BackColor = System.Drawing.Color.White;
-            lblCode.Location = new System.Drawing.Point(290, 135);
-            lblCode.Name = "lblCode";
-            lblCode.Size = new System.Drawing.Size(69, 36);
-            lblCode.TabIndex = 4;
-            lblCode.Text = "کد ملی :";
-            // 
-            // txtLastName
-            // 
-            txtLastName.Location = new System.Drawing.Point(28, 192);
-            txtLastName.Name = "txtLastName";
-            txtLastName.Size = new System.Drawing.Size(256, 42);
-            txtLastName.TabIndex = 9;
-            txtLastName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblLastName
-            // 
-            lblLastName.BackColor = System.Drawing.Color.White;
-            lblLastName.Location = new System.Drawing.Point(286, 198);
-            lblLastName.Name = "lblLastName";
-            lblLastName.Size = new System.Drawing.Size(108, 36);
-            lblLastName.TabIndex = 5;
-            lblLastName.Text = "نام خانوادگی :";
-            // 
-            // txtFirstName
-            // 
-            txtFirstName.Location = new System.Drawing.Point(404, 191);
-            txtFirstName.Name = "txtFirstName";
-            txtFirstName.Size = new System.Drawing.Size(236, 42);
-            txtFirstName.TabIndex = 10;
-            txtFirstName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblFirstName
-            // 
-            lblFirstName.BackColor = System.Drawing.Color.White;
-            lblFirstName.Location = new System.Drawing.Point(646, 191);
-            lblFirstName.Name = "lblFirstName";
-            lblFirstName.Size = new System.Drawing.Size(45, 36);
-            lblFirstName.TabIndex = 6;
-            lblFirstName.Text = "نام :";
-            // 
-            // txtPersonelCode
-            // 
-            txtPersonelCode.Location = new System.Drawing.Point(404, 135);
-            txtPersonelCode.MaxLength = 4;
-            txtPersonelCode.Name = "txtPersonelCode";
-            txtPersonelCode.Size = new System.Drawing.Size(236, 42);
-            txtPersonelCode.TabIndex = 11;
-            txtPersonelCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblPersonnalCode
-            // 
-            lblPersonnalCode.BackColor = System.Drawing.Color.White;
-            lblPersonnalCode.Location = new System.Drawing.Point(646, 138);
-            lblPersonnalCode.Name = "lblPersonnalCode";
-            lblPersonnalCode.Size = new System.Drawing.Size(94, 36);
-            lblPersonnalCode.TabIndex = 7;
-            lblPersonnalCode.Text = "کد پرسنلی :";
-            // 
-            // label3
-            // 
-            label3.BackColor = System.Drawing.Color.White;
-            label3.Location = new System.Drawing.Point(646, 248);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(93, 36);
-            label3.TabIndex = 6;
-            label3.Text = "نام کاربری :";
-            // 
-            // txtUserName
-            // 
-            txtUserName.Location = new System.Drawing.Point(404, 248);
-            txtUserName.Name = "txtUserName";
-            txtUserName.Size = new System.Drawing.Size(236, 42);
-            txtUserName.TabIndex = 10;
-            txtUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label4
-            // 
-            label4.BackColor = System.Drawing.Color.White;
-            label4.Location = new System.Drawing.Point(290, 248);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(79, 36);
-            label4.TabIndex = 6;
-            label4.Text = "گذرواژه :";
-            // 
-            // txtPassword
-            // 
-            txtPassword.Location = new System.Drawing.Point(28, 248);
-            txtPassword.Name = "txtPassword";
-            txtPassword.Size = new System.Drawing.Size(256, 42);
-            txtPassword.TabIndex = 10;
-            txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            panel1.BackColor = System.Drawing.Color.White;
+            panel1.Controls.Add(btnBack);
+            panel1.Controls.Add(btnSave);
+            panel1.Controls.Add(txtNationalCode);
+            panel1.Controls.Add(lblCode);
+            panel1.Controls.Add(txtLastName);
+            panel1.Controls.Add(lblLastName);
+            panel1.Controls.Add(txtPassword);
+            panel1.Controls.Add(txtUserName);
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(txtFirstName);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(lblFirstName);
+            panel1.Controls.Add(txtPersonelCode);
+            panel1.Controls.Add(lblPersonnalCode);
+            panel1.Location = new System.Drawing.Point(12, 107);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(732, 293);
+            panel1.TabIndex = 2;
             // 
             // btnBack
             // 
             btnBack.BackColor = System.Drawing.Color.Turquoise;
             btnBack.Font = new System.Drawing.Font("B Koodak", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 178);
             btnBack.ForeColor = System.Drawing.Color.White;
-            btnBack.Location = new System.Drawing.Point(118, 316);
+            btnBack.Location = new System.Drawing.Point(100, 211);
             btnBack.Name = "btnBack";
             btnBack.Size = new System.Drawing.Size(235, 51);
-            btnBack.TabIndex = 12;
+            btnBack.TabIndex = 20;
             btnBack.Text = "بازگشت";
             btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;
@@ -197,13 +108,117 @@ namespace Hardware_ID
             btnSave.BackColor = System.Drawing.Color.Turquoise;
             btnSave.Font = new System.Drawing.Font("B Koodak", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 178);
             btnSave.ForeColor = System.Drawing.Color.White;
-            btnSave.Location = new System.Drawing.Point(359, 316);
+            btnSave.Location = new System.Drawing.Point(341, 211);
             btnSave.Name = "btnSave";
             btnSave.Size = new System.Drawing.Size(235, 51);
-            btnSave.TabIndex = 13;
+            btnSave.TabIndex = 16;
             btnSave.Text = "ثبت";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
+            // 
+            // txtNationalCode
+            // 
+            txtNationalCode.Location = new System.Drawing.Point(10, 30);
+            txtNationalCode.MaxLength = 10;
+            txtNationalCode.Name = "txtNationalCode";
+            txtNationalCode.Size = new System.Drawing.Size(240, 42);
+            txtNationalCode.TabIndex = 9;
+            txtNationalCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblCode
+            // 
+            lblCode.BackColor = System.Drawing.Color.White;
+            lblCode.Location = new System.Drawing.Point(271, 30);
+            lblCode.Name = "lblCode";
+            lblCode.Size = new System.Drawing.Size(78, 36);
+            lblCode.TabIndex = 12;
+            lblCode.Text = "کد ملی :";
+            // 
+            // txtLastName
+            // 
+            txtLastName.Location = new System.Drawing.Point(10, 87);
+            txtLastName.Name = "txtLastName";
+            txtLastName.Size = new System.Drawing.Size(240, 42);
+            txtLastName.TabIndex = 11;
+            txtLastName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblLastName
+            // 
+            lblLastName.BackColor = System.Drawing.Color.White;
+            lblLastName.Location = new System.Drawing.Point(260, 93);
+            lblLastName.Name = "lblLastName";
+            lblLastName.Size = new System.Drawing.Size(123, 36);
+            lblLastName.TabIndex = 14;
+            lblLastName.Text = "نام خانوادگی :";
+            // 
+            // txtPassword
+            // 
+            txtPassword.Location = new System.Drawing.Point(10, 143);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new System.Drawing.Size(240, 42);
+            txtPassword.TabIndex = 15;
+            txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtUserName
+            // 
+            txtUserName.Location = new System.Drawing.Point(397, 143);
+            txtUserName.Name = "txtUserName";
+            txtUserName.Size = new System.Drawing.Size(212, 42);
+            txtUserName.TabIndex = 13;
+            txtUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label4
+            // 
+            label4.BackColor = System.Drawing.Color.White;
+            label4.Location = new System.Drawing.Point(263, 143);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(93, 36);
+            label4.TabIndex = 17;
+            label4.Text = "گذرواژه :";
+            // 
+            // txtFirstName
+            // 
+            txtFirstName.Location = new System.Drawing.Point(397, 86);
+            txtFirstName.Name = "txtFirstName";
+            txtFirstName.Size = new System.Drawing.Size(212, 42);
+            txtFirstName.TabIndex = 10;
+            txtFirstName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label3
+            // 
+            label3.BackColor = System.Drawing.Color.White;
+            label3.Location = new System.Drawing.Point(628, 143);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(104, 36);
+            label3.TabIndex = 18;
+            label3.Text = "نام کاربری :";
+            // 
+            // lblFirstName
+            // 
+            lblFirstName.BackColor = System.Drawing.Color.White;
+            lblFirstName.Location = new System.Drawing.Point(628, 86);
+            lblFirstName.Name = "lblFirstName";
+            lblFirstName.Size = new System.Drawing.Size(74, 36);
+            lblFirstName.TabIndex = 19;
+            lblFirstName.Text = "نام :";
+            // 
+            // txtPersonelCode
+            // 
+            txtPersonelCode.Location = new System.Drawing.Point(397, 30);
+            txtPersonelCode.MaxLength = 4;
+            txtPersonelCode.Name = "txtPersonelCode";
+            txtPersonelCode.Size = new System.Drawing.Size(212, 42);
+            txtPersonelCode.TabIndex = 8;
+            txtPersonelCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblPersonnalCode
+            // 
+            lblPersonnalCode.BackColor = System.Drawing.Color.White;
+            lblPersonnalCode.Location = new System.Drawing.Point(615, 33);
+            lblPersonnalCode.Name = "lblPersonnalCode";
+            lblPersonnalCode.Size = new System.Drawing.Size(117, 36);
+            lblPersonnalCode.TabIndex = 21;
+            lblPersonnalCode.Text = "کد پرسنلی :";
             // 
             // frmAdmin
             // 
@@ -211,21 +226,7 @@ namespace Hardware_ID
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.Silver;
             ClientSize = new System.Drawing.Size(756, 412);
-            Controls.Add(btnBack);
-            Controls.Add(btnSave);
-            Controls.Add(txtNationalCode);
-            Controls.Add(lblCode);
-            Controls.Add(txtLastName);
-            Controls.Add(lblLastName);
-            Controls.Add(txtPassword);
-            Controls.Add(txtUserName);
-            Controls.Add(label4);
-            Controls.Add(txtFirstName);
-            Controls.Add(label3);
-            Controls.Add(lblFirstName);
-            Controls.Add(txtPersonelCode);
-            Controls.Add(lblPersonnalCode);
-            Controls.Add(label2);
+            Controls.Add(panel1);
             Controls.Add(label1);
             Font = new System.Drawing.Font("B Koodak", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 178);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -235,28 +236,29 @@ namespace Hardware_ID
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Load += frmAdmin_Load;
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtNationalCode;
         private System.Windows.Forms.Label lblCode;
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.Label lblLastName;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtFirstName;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblFirstName;
         private System.Windows.Forms.TextBox txtPersonelCode;
         private System.Windows.Forms.Label lblPersonnalCode;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtUserName;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Button btnSave;
     }
 }

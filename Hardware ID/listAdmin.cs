@@ -55,7 +55,6 @@ namespace Hardware_ID
         public void Reload()
         {
             var db = DbContextSingleton.GetInstance();
-            db = new HdDbContext();
             db.Database.EnsureCreated();
             db.Admins.Load();
             this.adminBindingSource.DataSource = db.Admins.Local.ToBindingList();
