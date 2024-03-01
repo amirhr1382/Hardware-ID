@@ -32,6 +32,10 @@ namespace Hardware_ID.DatabaseContext
         #endregion
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=HardwareIdDb;User Id=admin;password=123456@;Trusted_Connection=True;TrustServerCertificate=True;");
+            => optionsBuilder.UseSqlServer("Data Source=localhost;" +
+                "Initial Catalog=HardwareIdDb;" +
+                "User Id=admin;" +
+                "password=123456@;Trusted_Connection=True;" +
+                "TrustServerCertificate=True;");
     }
 }

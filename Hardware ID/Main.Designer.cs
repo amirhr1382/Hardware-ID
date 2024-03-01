@@ -48,7 +48,7 @@ namespace Hardware_ID
             notifyIcon1 = new System.Windows.Forms.NotifyIcon(components);
             statusStrip1 = new System.Windows.Forms.StatusStrip();
             lblUsername = new System.Windows.Forms.ToolStripStatusLabel();
-            lbldeta = new System.Windows.Forms.ToolStripStatusLabel();
+            lblLoginDate = new System.Windows.Forms.ToolStripStatusLabel();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             pictureBox2 = new System.Windows.Forms.PictureBox();
             menuStrip1.SuspendLayout();
@@ -77,6 +77,7 @@ namespace Hardware_ID
             // 
             // AdminItem
             // 
+            AdminItem.Image = Properties.Resources.software_engineer;
             AdminItem.Name = "AdminItem";
             AdminItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A;
             AdminItem.Size = new System.Drawing.Size(291, 38);
@@ -85,6 +86,7 @@ namespace Hardware_ID
             // 
             // MemberItem
             // 
+            MemberItem.Image = Properties.Resources.personal;
             MemberItem.Name = "MemberItem";
             MemberItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M;
             MemberItem.Size = new System.Drawing.Size(291, 38);
@@ -93,6 +95,7 @@ namespace Hardware_ID
             // 
             // PartItem
             // 
+            PartItem.Image = Properties.Resources.IMG_20240302_024909_274;
             PartItem.Name = "PartItem";
             PartItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P;
             PartItem.Size = new System.Drawing.Size(291, 38);
@@ -101,6 +104,7 @@ namespace Hardware_ID
             // 
             // RegionItem
             // 
+            RegionItem.Image = Properties.Resources.buildings;
             RegionItem.Name = "RegionItem";
             RegionItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R;
             RegionItem.Size = new System.Drawing.Size(291, 38);
@@ -116,6 +120,7 @@ namespace Hardware_ID
             // 
             // HardwareIdItem
             // 
+            HardwareIdItem.Image = Properties.Resources.mainboard;
             HardwareIdItem.Name = "HardwareIdItem";
             HardwareIdItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H;
             HardwareIdItem.Size = new System.Drawing.Size(334, 38);
@@ -124,6 +129,7 @@ namespace Hardware_ID
             // 
             // NarmafzarItem
             // 
+            NarmafzarItem.Image = Properties.Resources._3d_modeling;
             NarmafzarItem.Name = "NarmafzarItem";
             NarmafzarItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N;
             NarmafzarItem.Size = new System.Drawing.Size(334, 38);
@@ -131,6 +137,7 @@ namespace Hardware_ID
             // 
             // ServerItem
             // 
+            ServerItem.Image = Properties.Resources.office_building;
             ServerItem.Name = "ServerItem";
             ServerItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V;
             ServerItem.Size = new System.Drawing.Size(334, 38);
@@ -138,6 +145,7 @@ namespace Hardware_ID
             // 
             // SearchItem
             // 
+            SearchItem.Image = Properties.Resources.search;
             SearchItem.Name = "SearchItem";
             SearchItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S;
             SearchItem.Size = new System.Drawing.Size(334, 38);
@@ -146,19 +154,22 @@ namespace Hardware_ID
             // 
             // گزارشاتToolStripMenuItem
             // 
+            گزارشاتToolStripMenuItem.Image = Properties.Resources.monitoring;
             گزارشاتToolStripMenuItem.Name = "گزارشاتToolStripMenuItem";
-            گزارشاتToolStripMenuItem.Size = new System.Drawing.Size(92, 38);
+            گزارشاتToolStripMenuItem.Size = new System.Drawing.Size(112, 38);
             گزارشاتToolStripMenuItem.Text = "گزارشات";
             // 
             // راهنماToolStripMenuItem
             // 
             راهنماToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { AboutItem });
+            راهنماToolStripMenuItem.Image = Properties.Resources.guide;
             راهنماToolStripMenuItem.Name = "راهنماToolStripMenuItem";
-            راهنماToolStripMenuItem.Size = new System.Drawing.Size(69, 38);
+            راهنماToolStripMenuItem.Size = new System.Drawing.Size(89, 38);
             راهنماToolStripMenuItem.Text = "راهنما";
             // 
             // AboutItem
             // 
+            AboutItem.Image = Properties.Resources.about;
             AboutItem.Name = "AboutItem";
             AboutItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B;
             AboutItem.Size = new System.Drawing.Size(237, 38);
@@ -166,9 +177,10 @@ namespace Hardware_ID
             // 
             // ExitItem
             // 
+            ExitItem.Image = Properties.Resources.exit;
             ExitItem.Name = "ExitItem";
             ExitItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E;
-            ExitItem.Size = new System.Drawing.Size(69, 38);
+            ExitItem.Size = new System.Drawing.Size(89, 38);
             ExitItem.Text = "خروج";
             ExitItem.Click += ExitItem_Click;
             // 
@@ -180,7 +192,7 @@ namespace Hardware_ID
             // statusStrip1
             // 
             statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { lblUsername, lbldeta });
+            statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { lblUsername, lblLoginDate });
             statusStrip1.Location = new System.Drawing.Point(0, 647);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new System.Drawing.Size(1262, 26);
@@ -193,15 +205,16 @@ namespace Hardware_ID
             lblUsername.Size = new System.Drawing.Size(77, 20);
             lblUsername.Text = "نام کاربری :";
             // 
-            // lbldeta
+            // lblLoginDate
             // 
-            lbldeta.Name = "lbldeta";
-            lbldeta.Size = new System.Drawing.Size(77, 20);
-            lbldeta.Text = "زمان ورود :";
+            lblLoginDate.Name = "lblLoginDate";
+            lblLoginDate.Size = new System.Drawing.Size(77, 20);
+            lblLoginDate.Text = "زمان ورود :";
             // 
             // pictureBox1
             // 
             pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            pictureBox1.Image = Properties.Resources.main;
             pictureBox1.Location = new System.Drawing.Point(0, 42);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new System.Drawing.Size(1262, 605);
@@ -212,6 +225,7 @@ namespace Hardware_ID
             // pictureBox2
             // 
             pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            pictureBox2.Image = Properties.Resources.شهرداری_شهرضا;
             pictureBox2.Location = new System.Drawing.Point(12, 54);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new System.Drawing.Size(106, 92);
@@ -269,5 +283,6 @@ namespace Hardware_ID
         private System.Windows.Forms.ToolStripStatusLabel lbldeta;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ToolStripStatusLabel lblLoginDate;
     }
 }
