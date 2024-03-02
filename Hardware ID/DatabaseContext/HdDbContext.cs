@@ -6,9 +6,11 @@ using Hardware_ID.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Hardware_ID.DatabaseContext
 {
@@ -33,9 +35,10 @@ namespace Hardware_ID.DatabaseContext
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseSqlServer("Data Source=localhost;" +
-                "Initial Catalog=HardwareIdDb;" +
-                "User Id=admin;" +
-                "password=123456@;Trusted_Connection=True;" +
-                "TrustServerCertificate=True;");
+                                           "Initial Catalog=HardwareIdDb;" +
+                                           "User Id=admin;" +
+                                           "password=123456@;" +
+                                           "Trusted_Connection=True;" +
+                                           "TrustServerCertificate=True;");
     }
 }

@@ -67,7 +67,7 @@ namespace Hardware_ID.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Admins", (string)null);
+                    b.ToTable("Admins");
                 });
 
             modelBuilder.Entity("Hardware_ID.Models.HardwareId", b =>
@@ -104,7 +104,7 @@ namespace Hardware_ID.Migrations
 
                     b.HasIndex("RegionId");
 
-                    b.ToTable("HardwareIds", (string)null);
+                    b.ToTable("HardwareIds");
                 });
 
             modelBuilder.Entity("Hardware_ID.Models.Member", b =>
@@ -150,7 +150,7 @@ namespace Hardware_ID.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Members", (string)null);
+                    b.ToTable("Members");
                 });
 
             modelBuilder.Entity("Hardware_ID.Models.Part", b =>
@@ -178,7 +178,7 @@ namespace Hardware_ID.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Parts", (string)null);
+                    b.ToTable("Parts");
                 });
 
             modelBuilder.Entity("Hardware_ID.Models.Region", b =>
@@ -201,7 +201,7 @@ namespace Hardware_ID.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Regions", (string)null);
+                    b.ToTable("Regions");
                 });
 
             modelBuilder.Entity("Hardware_ID.Models.HardwareId", b =>

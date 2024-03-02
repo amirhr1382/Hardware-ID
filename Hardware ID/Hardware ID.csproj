@@ -37,10 +37,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Migrations\20240220153232_InitialCreate.cs" />
-    <Compile Remove="Migrations\20240220153232_InitialCreate.Designer.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <None Remove="Hardware ID.accdb" />
     <None Remove="HardwareIdDb_log.ldf" />
   </ItemGroup>
@@ -90,7 +86,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />
-    <Folder Include="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
