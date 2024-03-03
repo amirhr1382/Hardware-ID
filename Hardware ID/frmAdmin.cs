@@ -42,6 +42,14 @@ namespace Hardware_ID
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            var db = DbContextSingleton.GetInstance();
+
+            if (db.Admins.Any(a => a.Username == txtUserName.Text && a.Id != adminId))
+            {
+                MessageBox.Show("نام کاربری قبلا برای مدیر دیگری ثبت شده است", "خطا");
+                return;
+            }
+
             if (txtNationalCode.Text.Length < 10)
             {
                 if (MessageBox.Show("تعداد کاراکتر های کد ملی کمتر از 10 رقم است", "خطا", MessageBoxButtons.RetryCancel) == DialogResult.Retry)
@@ -52,11 +60,10 @@ namespace Hardware_ID
                 }
             }
 
-            var db = DbContextSingleton.GetInstance();
-
             if (adminId != 0)
             {
                 Admin adminSelected = db.Admins.Find(adminId);
+
                 adminSelected.Username = txtUserName.Text;
                 adminSelected.Password = txtPassword.Text;
                 adminSelected.FirstName = txtFirstName.Text;
@@ -73,7 +80,8 @@ namespace Hardware_ID
                     FirstName = txtFirstName.Text,
                     LastName = txtLastName.Text,
                     NationalCode = txtNationalCode.Text,
-                    ImagePath = string.Empty
+                    ImagePath = string.Empty,
+                    PersonelCode = txtPersonelCode.Text,
                 };
                 db.Admins.Add(adminNew);
             }

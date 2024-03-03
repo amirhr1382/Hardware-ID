@@ -18,5 +18,6 @@ namespace Hardware_ID.Models
         public string Password { get; set; }
         public string ImagePath { get; set; }
         public string PersonelCode { get; set; }
+        public bool IsMainAdmin { get; set; }
     }
 }

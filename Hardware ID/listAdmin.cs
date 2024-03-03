@@ -34,17 +34,22 @@ namespace Hardware_ID
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("آیا از حذف این رکورد اطمینان دارید", "تاییدیه حذف", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            var db = DbContextSingleton.GetInstance();
+            var admin = db.Admins.Single(a => a.Id == GetSelectedId());
+            if (!admin.IsMainAdmin)
             {
-                var db = DbContextSingleton.GetInstance();
-                var admin = db.Admins.Single(a => a.Id == GetSelectedId());
-                db.Admins.Remove(admin);
-                if (db.SaveChanges() > 0)
-                    Reload();
-                else
-                    MessageBox.Show("با شکست مواجه شد");
+                DialogResult result = MessageBox.Show("آیا از حذف این رکورد اطمینان دارید", "تاییدیه حذف", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    db.Admins.Remove(admin);
+                    if (db.SaveChanges() > 0)
+                        Reload();
+                    else
+                        MessageBox.Show("با شکست مواجه شد");
+                }
             }
+            else
+                MessageBox.Show("مدیر اصلی سیستم قابل حذف نمی‌باشد");
         }
 
         private void listAdmin_Load(object sender, EventArgs e)
@@ -57,7 +62,7 @@ namespace Hardware_ID
             var db = DbContextSingleton.GetInstance();
             db.Database.EnsureCreated();
             db.Admins.Load();
-            this.adminBindingSource.DataSource = db.Admins.Local.ToBindingList();
+            this.adminBindingSource.DataSource = db.Admins.ToList();
         }
 
         public int GetSelectedId()
