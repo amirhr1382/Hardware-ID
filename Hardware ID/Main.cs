@@ -57,5 +57,10 @@ namespace Hardware_ID
         {
             Application.Exit();
         }
+
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

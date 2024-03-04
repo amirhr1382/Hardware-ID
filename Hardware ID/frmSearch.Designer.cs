@@ -190,6 +190,7 @@
             Name = "frmSearch";
             RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             ShowIcon = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "جستجو";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

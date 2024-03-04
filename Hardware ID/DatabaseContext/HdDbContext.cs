@@ -37,7 +37,7 @@ namespace Hardware_ID.DatabaseContext
             => optionsBuilder.UseSqlServer("Data Source=localhost;" +
                                            "Initial Catalog=HardwareIdDb;" +
                                            "User Id=admin;" +
-                                           "password=123456@;" +
+                                           "password=1234;" +
                                            "Trusted_Connection=True;" +
                                            "TrustServerCertificate=True;");
     }

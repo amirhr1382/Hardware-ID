@@ -30,12 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             dataGridView1 = new System.Windows.Forms.DataGridView();
-            searchViewModelBindingSource = new System.Windows.Forms.BindingSource(components);
             memberNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             memberPersonelCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             partNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             partNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             regionNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            searchViewModelBindingSource = new System.Windows.Forms.BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)searchViewModelBindingSource).BeginInit();
             SuspendLayout();
@@ -55,10 +55,6 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new System.Drawing.Size(798, 450);
             dataGridView1.TabIndex = 0;
-            // 
-            // searchViewModelBindingSource
-            // 
-            searchViewModelBindingSource.DataSource = typeof(ViewModels.SearchViewModel);
             // 
             // memberNameDataGridViewTextBoxColumn
             // 
@@ -105,6 +101,10 @@
             regionNameDataGridViewTextBoxColumn.ReadOnly = true;
             regionNameDataGridViewTextBoxColumn.Width = 125;
             // 
+            // searchViewModelBindingSource
+            // 
+            searchViewModelBindingSource.DataSource = typeof(ViewModels.SearchViewModel);
+            // 
             // listSearch
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -114,6 +114,7 @@
             Name = "listSearch";
             RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             ShowIcon = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "جستجو";
             Load += listSearch_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

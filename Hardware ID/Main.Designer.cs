@@ -249,7 +249,10 @@ namespace Hardware_ID
             Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             Name = "Main";
             RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "صفحه اصلی";
+            WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            FormClosed += Main_FormClosed;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             statusStrip1.ResumeLayout(false);
